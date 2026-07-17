@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.log
+dist/
+build/
+
+# uploaded files are user data, don't commit them
+server/uploads/*
+!server/uploads/.gitkeep

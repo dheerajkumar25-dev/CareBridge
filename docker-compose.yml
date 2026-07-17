@@ -1,0 +1,36 @@
+# docker-compose.yml
+# Runs the whole stack locally: MongoDB + backend API + frontend.
+# NOTE: this file is written but untested in this environment (no Docker
+# available in the sandbox this project was built in) - test it on your
+# machine and adjust as needed.
+
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./server/.env
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/carebridge
+    depends_on:
+      - mongo
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+
+volumes:
+  mongo_data:
