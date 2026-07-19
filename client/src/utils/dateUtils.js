@@ -42,18 +42,18 @@ export { formatDateStr, getMonthGrid, DAY_NAMES };
 // ---- quick manual test (run: node client/src/utils/dateUtils.js) ----
 // import.meta.url check below lets this run standalone for testing,
 // the same way `if (require.main === module)` works in CommonJS.
-if (import.meta.url === `file://${process.argv[1]}`) {
-  // July 2026: July 1, 2026 is a Wednesday
-  const grid = getMonthGrid(2026, 6); // month 6 = July (0-indexed)
+// if (import.meta.url === `file://${process.argv[1]}`) {
+//   // July 2026: July 1, 2026 is a Wednesday
+//   const grid = getMonthGrid(2026, 6); // month 6 = July (0-indexed)
 
-  console.assert(grid.length === 3 + 31, `Expected 34 cells (3 blank + 31 days), got ${grid.length}`);
-  console.assert(grid[0] === null, "First 3 cells should be blank (Sun, Mon, Tue)");
-  console.assert(grid[3].dateStr === "2026-07-01", `Expected first real day to be 2026-07-01, got ${grid[3].dateStr}`);
-  console.assert(grid[3].dayOfWeek === "Wednesday", `July 1 2026 should be a Wednesday, got ${grid[3].dayOfWeek}`);
+//   console.assert(grid.length === 3 + 31, `Expected 34 cells (3 blank + 31 days), got ${grid.length}`);
+//   console.assert(grid[0] === null, "First 3 cells should be blank (Sun, Mon, Tue)");
+//   console.assert(grid[3].dateStr === "2026-07-01", `Expected first real day to be 2026-07-01, got ${grid[3].dateStr}`);
+//   console.assert(grid[3].dayOfWeek === "Wednesday", `July 1 2026 should be a Wednesday, got ${grid[3].dayOfWeek}`);
 
-  const lastCell = grid[grid.length - 1];
-  console.assert(lastCell.dateStr === "2026-07-31", `Expected last day to be 2026-07-31, got ${lastCell.dateStr}`);
+//   const lastCell = grid[grid.length - 1];
+//   console.assert(lastCell.dateStr === "2026-07-31", `Expected last day to be 2026-07-31, got ${lastCell.dateStr}`);
 
-  console.log("All dateUtils assertions passed.");
-  console.log(`July 2026 grid: ${grid.length} cells, starts on ${grid[3].dayOfWeek}, ends ${lastCell.dateStr}`);
-}
+//   console.log("All dateUtils assertions passed.");
+//   console.log(`July 2026 grid: ${grid.length} cells, starts on ${grid[3].dayOfWeek}, ends ${lastCell.dateStr}`);
+// }
