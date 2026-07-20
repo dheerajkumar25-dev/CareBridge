@@ -1,13 +1,13 @@
 # 🏥 CareBridge
 
-A full-stack MERN Doctor–Patient Appointment Portal that enables patients to search for doctors, book appointments, manage prescriptions, and allows doctors and administrators to efficiently manage healthcare workflows.
+A **full-stack MERN Doctor–Patient Appointment Portal** that enables patients to search for doctors, book appointments, upload medical reports, and allows doctors and administrators to efficiently manage healthcare workflows.
 
 ---
 
 ## ✨ Features
 
 ### 👤 Patient
-- Secure Authentication (JWT)
+- Secure JWT Authentication
 - Search & Filter Doctors
 - Book Appointments
 - Appointment History
@@ -32,7 +32,7 @@ A full-stack MERN Doctor–Patient Appointment Portal that enables patients to s
 ## 🛠️ Tech Stack
 
 ### Frontend
-- React
+- React 18
 - Vite
 - Tailwind CSS
 - React Router
@@ -46,6 +46,7 @@ A full-stack MERN Doctor–Patient Appointment Portal that enables patients to s
 - MongoDB
 - Mongoose
 - JWT Authentication
+- bcryptjs
 - Multer
 - Cloudinary
 - Nodemailer
@@ -56,10 +57,35 @@ A full-stack MERN Doctor–Patient Appointment Portal that enables patients to s
 ## 📂 Project Structure
 
 ```text
-CareBridge/
+CareBridge
+├── client
+│   ├── public
+│   ├── src
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── context
+│   │   ├── pages
+│   │   │   ├── admin
+│   │   │   ├── doctor
+│   │   │   └── patient
+│   │   ├── services
+│   │   ├── utils
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── package.json
+│   └── vite.config.js
 │
-├── client/
-├── server/
+├── server
+│   ├── config
+│   ├── controllers
+│   ├── middleware
+│   ├── models
+│   ├── routes
+│   ├── uploads
+│   ├── utils
+│   ├── server.js
+│   └── package.json
+│
 ├── docker-compose.yml
 ├── package.json
 └── README.md
@@ -67,25 +93,56 @@ CareBridge/
 
 ---
 
-## ⚙️ Installation
+## 🚀 Getting Started
 
-### Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/dheerajkumar25-dev/CareBridge.git
 cd CareBridge
 ```
 
-### Backend
+---
+
+### 2️⃣ Backend Setup
 
 ```bash
 cd server
 npm install
 copy .env.example .env
+```
+
+Update `.env`
+
+```env
+PORT=5000
+
+MONGO_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_secret_key
+
+CLOUDINARY_NAME=
+
+CLOUDINARY_KEY=
+
+CLOUDINARY_SECRET=
+
+EMAIL_USER=
+
+EMAIL_PASS=
+
+CLIENT_URL=http://localhost:5173
+```
+
+Run backend
+
+```bash
 npm run dev
 ```
 
-### Frontend
+---
+
+### 3️⃣ Frontend Setup
 
 ```bash
 cd client
@@ -96,20 +153,33 @@ npm run dev
 
 ---
 
-## 🔑 Environment Variables
+### 4️⃣ Open Application
 
-```env
-PORT=
-MONGO_URI=
-JWT_SECRET=
+Frontend
 
-CLOUDINARY_NAME=
-CLOUDINARY_KEY=
-CLOUDINARY_SECRET=
-
-EMAIL_USER=
-EMAIL_PASS=
 ```
+http://localhost:5173
+```
+
+Backend
+
+```
+http://localhost:5000
+```
+
+---
+
+## 🔐 Authentication
+
+The application uses **JWT Authentication** with **Role-Based Access Control (RBAC).**
+
+Supported roles
+
+- Patient
+- Doctor
+- Admin
+
+Protected APIs are secured using JWT middleware.
 
 ---
 
@@ -126,16 +196,22 @@ EMAIL_PASS=
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
 ```text
-React Frontend
-      │
-Axios + JWT
-      │
-Express REST API
-      │
-MongoDB
+                 React + Vite
+                      │
+              Axios + JWT Token
+                      │
+               Express REST API
+                      │
+                Authentication
+                      │
+              Business Controllers
+                      │
+                 MongoDB Atlas
+                      │
+      Cloudinary | Nodemailer | PDFKit
 ```
 
 ---
@@ -144,10 +220,19 @@ MongoDB
 
 - Online Payment Integration
 - Video Consultation
-- Email & Push Notifications
+- Push Notifications
 - AI-based Doctor Recommendation
 - Multi-language Support
+- PWA Support
+- Automated Testing
 - CI/CD Pipeline
+- Docker Deployment
+
+---
+
+## 📌 Future Screenshots
+
+Project screenshots and live demo will be added in future updates.
 
 ---
 
@@ -155,11 +240,15 @@ MongoDB
 
 **Dheeraj Kumar**
 
-B.Tech in Electronics & Communication Engineering  
+B.Tech (Electronics & Communication Engineering)
+
 IIIT Bhagalpur
 
-GitHub: https://github.com/dheerajkumar25-dev
+GitHub:
+https://github.com/dheerajkumar25-dev
 
 ---
 
-⭐ If you found this project useful, consider giving it a star.
+## ⭐ Support
+
+If you found this project helpful, please consider giving it a ⭐ on GitHub.
